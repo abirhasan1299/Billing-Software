@@ -49,7 +49,6 @@
                 <th>Student Name</th>
                 <th>Course</th>
                 <th>Batch</th>
-                <th>Fee Paid</th>
                 <th>Status</th>
                 <th>Actions</th>
             </tr>
@@ -62,11 +61,18 @@
                 <td>Abir Hasan</td>
                 <td>B.Sc in CS</td>
                 <td>Spring 2025</td>
-                <td>৳45,000</td>
                 <td><span class="status-active">Active</span></td>
                 <td>
-                    <button class="btn btn-sm btn-info">Edit</button>
-                    <button class="btn btn-sm btn-danger">Delete</button>
+                    <div class="btn-group">
+                        <button type="button" class="btn btn-sm btn-danger dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+                            Action
+                        </button>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="#">View</a></li>
+                            <li><a class="dropdown-item" href="#">Edit</a></li>
+                            <li><a class="dropdown-item text-danger" href="#">Trash</a></li>
+                        </ul>
+                    </div>
                 </td>
             </tr>
             <tr>
@@ -75,11 +81,18 @@
                 <td>Sadia Rahman</td>
                 <td>BBA</td>
                 <td>Fall 2025</td>
-                <td>৳30,000</td>
                 <td><span class="status-inactive">Inactive</span></td>
                 <td>
-                    <button class="btn btn-sm btn-info">Edit</button>
-                    <button class="btn btn-sm btn-danger">Delete</button>
+                    <div class="btn-group">
+                        <button type="button" class="btn btn-sm btn-danger dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+                            Action
+                        </button>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="#">View</a></li>
+                            <li><a class="dropdown-item" href="#">Edit</a></li>
+                            <li><a class="dropdown-item text-danger" href="#">Trash</a></li>
+                        </ul>
+                    </div>
                 </td>
             </tr>
             <!-- Add more rows dynamically -->

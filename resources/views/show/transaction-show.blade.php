@@ -73,8 +73,17 @@
                     <td>INV12345</td>
                     <td>2025-08-01</td>
                     <td class="action-btns">
-                        <button class="btn btn-sm btn-primary">View</button>
-                        <button class="btn btn-sm btn-danger">Delete</button>
+                        <div class="btn-group">
+                            <button type="button" class="btn btn-sm btn-danger dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+                                Action
+                            </button>
+                            <ul class="dropdown-menu">
+                                <li><a class="dropdown-item" href="#">View</a></li>
+                                <li><a class="dropdown-item" href="#">Download PDF</a></li>
+                                <li><a class="dropdown-item" href="#">Edit</a></li>
+                                <li><a class="dropdown-item text-danger" href="#">Trash</a></li>
+                            </ul>
+                        </div>
                     </td>
                 </tr>
                 <tr>
@@ -85,8 +94,17 @@
                     <td>AGX9987</td>
                     <td>2025-07-28</td>
                     <td class="action-btns">
-                        <button class="btn btn-sm btn-primary">View</button>
-                        <button class="btn btn-sm btn-danger">Delete</button>
+                        <div class="btn-group">
+                            <button type="button" class="btn btn-sm btn-danger dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+                                Action
+                            </button>
+                            <ul class="dropdown-menu">
+                                <li><a class="dropdown-item" href="#">View</a></li>
+                                <li><a class="dropdown-item" href="#">Download PDF</a></li>
+                                <li><a class="dropdown-item" href="#">Edit</a></li>
+                                <li><a class="dropdown-item text-danger" href="#">Trash</a></li>
+                            </ul>
+                        </div>
                     </td>
                 </tr>
                 <!-- Add more transaction rows as needed -->
