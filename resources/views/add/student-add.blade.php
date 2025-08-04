@@ -36,7 +36,7 @@
     </style>
     <div class="form-section">
         <div class="form-card">
-            <h4 class="mb-4 form-title">🎓 Student Enrollment Form</h4>
+            <h4 class="mb-4 form-title text-center" >🎓 Student Enrollment Form</h4>
             <form>
                 <div class="row g-3">
 
