@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
 
 <p align="center">
@@ -64,3 +65,7 @@ If you discover a security vulnerability within Laravel, please send an e-mail t
 ## License
 
 The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+=======
+# Billing-Software
+Accounts &amp; Fee Management System is a powerful web-based application designed for educational institutions and agencies to manage student fees, payments, invoicing, and financial tracking. It features automated reminders, e-invoicing, agency/lead commission tracking, and insightful dashboards— fee management streamlined, accurate, and professional.
+>>>>>>> d146259a474aa0107044b7cd028140f3f8436ea5
