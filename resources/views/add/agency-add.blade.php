@@ -19,7 +19,7 @@
     </style>
     <div class="row">
         <div class="card form-card p-4">
-            <h4 class="mb-4 text-primary">Board / Center Details</h4>
+            <h4 class="mb-4 text-primary text-center">Board / Center Details</h4>
             <form>
                 <div class="row g-3">
                     <!-- Left Column -->
