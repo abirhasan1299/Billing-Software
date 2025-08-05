@@ -35,6 +35,7 @@ Route::get('settings/',[HomeController::class,'Setting'])->name('settings');
 |--------------------------------------------------------------------------
 */
 Route::get('agency-add/',[UniversityController::class,'Home'])->name('agency.add');
+Route::post('agency-insert/',[UniversityController::class,'addAgency'])->name('agency.insert');
 Route::get('agency/',[UniversityController::class,'Show'])->name('agency.show');
 
 /*
