@@ -46,6 +46,8 @@ jobs:
       run: |
         mkdir -p database
         touch database/database.sqlite
+    - name: Make Migration
+      run: php artisan migrate
 
     - name: Run Tests
       env:
