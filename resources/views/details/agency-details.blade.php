@@ -3,8 +3,8 @@
 
 @section('content')
 
-        <div class="card shadow-lg border-0 rounded-5">
-            <div class="card-header bg-gradient bg-success text-white rounded-top-5 py-4 px-4">
+        <div class="card shadow-lg ">
+            <div class="card-header bg-gradient bg-success text-white  py-4 px-4">
                 <h3 class="mb-0">
                     <i class="bi bi-building"></i> Agency Details
                 </h3>

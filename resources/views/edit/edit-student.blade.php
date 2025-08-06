@@ -1,5 +1,5 @@
 @extends('master')
-@section('title','Student Add')
+@section('title', 'Edit Student')
 
 @section('content')
     <style>
@@ -7,8 +7,6 @@
             background-color: #f5f7fa;
         }
         .form-section {
-            /*max-width: 1000px;*/
-            /*margin: 40px auto;*/
         }
         .form-card {
             background: #fff;
@@ -37,56 +35,56 @@
 
     <div class="form-section">
         <div class="form-card">
-            <h4 class="mb-4 form-title text-center" >🎓 Student Enrollment Form</h4>
-            <form action="{{ route('student.insert') }}" method="POST" enctype="multipart/form-data">
+            <h4 class="mb-4 form-title text-center">✏️ Edit Student</h4>
+            <form action="{{ route('student.update', $student->id) }}" method="POST" enctype="multipart/form-data">
                 @csrf
+                @method('PUT')
                 <div class="row g-3">
-
                     <!-- Left Column -->
                     <div class="col-md-6">
                         <div class="mb-3">
                             <label class="form-label">Enrollment Number</label>
-                            <input type="text" name="enrollment" class="form-control" value="{{ old('enrollment') }}">
+                            <input type="text" name="enrollment" class="form-control" value="{{ old('enrollment', $student->enrollment) }}">
                             @error('enrollment') <small class="text-danger">{{ $message }}</small> @enderror
                         </div>
                         <div class="mb-3">
                             <label class="form-label">Full Name</label>
-                            <input type="text" name="name" class="form-control" value="{{ old('name') }}">
+                            <input type="text" name="name" class="form-control" value="{{ old('name', $student->name) }}">
                             @error('name') <small class="text-danger">{{ $message }}</small> @enderror
                         </div>
                         <div class="mb-3">
                             <label class="form-label">Date of Birth</label>
-                            <input type="date" name="dob" class="form-control" value="{{ old('dob') }}">
+                            <input type="date" name="dob" class="form-control" value="{{ old('dob', $student->dob) }}">
                             @error('dob') <small class="text-danger">{{ $message }}</small> @enderror
                         </div>
                         <div class="mb-3">
                             <label class="form-label">Email</label>
-                            <input type="email" name="email" class="form-control" value="{{ old('email') }}">
+                            <input type="email" name="email" class="form-control" value="{{ old('email', $student->email) }}">
                             @error('email') <small class="text-danger">{{ $message }}</small> @enderror
                         </div>
                         <div class="mb-3">
                             <label class="form-label">Phone</label>
-                            <input type="tel" name="phone" class="form-control" value="{{ old('phone') }}">
+                            <input type="tel" name="phone" class="form-control" value="{{ old('phone', $student->phone) }}">
                             @error('phone') <small class="text-danger">{{ $message }}</small> @enderror
                         </div>
                         <div class="mb-3">
                             <label class="form-label">Gender</label>
                             <select name="gender" class="form-select">
-                                <option disabled selected>Select gender</option>
-                                <option value="Male" {{ old('gender') == 'Male' ? 'selected' : '' }}>Male</option>
-                                <option value="Female" {{ old('gender') == 'Female' ? 'selected' : '' }}>Female</option>
-                                <option value="Other" {{ old('gender') == 'Other' ? 'selected' : '' }}>Other</option>
+                                <option disabled>Select gender</option>
+                                <option value="Male" {{ old('gender', $student->gender) == 'Male' ? 'selected' : '' }}>Male</option>
+                                <option value="Female" {{ old('gender', $student->gender) == 'Female' ? 'selected' : '' }}>Female</option>
+                                <option value="Other" {{ old('gender', $student->gender) == 'Other' ? 'selected' : '' }}>Other</option>
                             </select>
                             @error('gender') <small class="text-danger">{{ $message }}</small> @enderror
                         </div>
                         <div class="mb-3">
                             <label class="form-label">Father's Name</label>
-                            <input type="text" name="father" class="form-control" value="{{ old('father') }}">
+                            <input type="text" name="father" class="form-control" value="{{ old('father', $student->father) }}">
                             @error('father') <small class="text-danger">{{ $message }}</small> @enderror
                         </div>
                         <div class="mb-3">
                             <label class="form-label">Mother's Name</label>
-                            <input type="text" name="mother" class="form-control" value="{{ old('mother') }}">
+                            <input type="text" name="mother" class="form-control" value="{{ old('mother', $student->mother) }}">
                             @error('mother') <small class="text-danger">{{ $message }}</small> @enderror
                         </div>
                     </div>
@@ -95,42 +93,42 @@
                     <div class="col-md-6">
                         <div class="mb-3">
                             <label class="form-label">Address</label>
-                            <textarea name="address" class="form-control" rows="2">{{ old('address') }}</textarea>
+                            <textarea name="address" class="form-control" rows="2">{{ old('address', $student->address) }}</textarea>
                             @error('address') <small class="text-danger">{{ $message }}</small> @enderror
                         </div>
                         <div class="mb-3">
                             <label class="form-label">City</label>
-                            <input type="text" name="city" class="form-control" value="{{ old('city') }}">
+                            <input type="text" name="city" class="form-control" value="{{ old('city', $student->city) }}">
                             @error('city') <small class="text-danger">{{ $message }}</small> @enderror
                         </div>
                         <div class="mb-3">
                             <label class="form-label">State</label>
-                            <input type="text" name="state" class="form-control" value="{{ old('state') }}">
+                            <input type="text" name="state" class="form-control" value="{{ old('state', $student->state) }}">
                             @error('state') <small class="text-danger">{{ $message }}</small> @enderror
                         </div>
                         <div class="mb-3">
                             <label class="form-label">Postal Code</label>
-                            <input type="text" name="postal_code" class="form-control" value="{{ old('postal_code') }}">
+                            <input type="text" name="postal_code" class="form-control" value="{{ old('postal_code', $student->postal_code) }}">
                             @error('postal_code') <small class="text-danger">{{ $message }}</small> @enderror
                         </div>
                         <div class="mb-3">
                             <label class="form-label">Country</label>
-                            <input type="text" name="country" class="form-control" value="{{ old('country') }}">
+                            <input type="text" name="country" class="form-control" value="{{ old('country', $student->country) }}">
                             @error('country') <small class="text-danger">{{ $message }}</small> @enderror
                         </div>
                         <div class="mb-3">
                             <label class="form-label">Course / Program</label>
-                            <input type="text" name="course" class="form-control" value="{{ old('course') }}">
+                            <input type="text" name="course" class="form-control" value="{{ old('course', $student->course) }}">
                             @error('course') <small class="text-danger">{{ $message }}</small> @enderror
                         </div>
                         <div class="mb-3">
                             <label class="form-label">Batch / Session</label>
-                            <input type="text" name="batch" class="form-control" value="{{ old('batch') }}">
+                            <input type="text" name="batch" class="form-control" value="{{ old('batch', $student->batch) }}">
                             @error('batch') <small class="text-danger">{{ $message }}</small> @enderror
                         </div>
                         <div class="mb-3">
                             <label class="form-label">Admission Date</label>
-                            <input type="date" name="admission_date" class="form-control" value="{{ old('admission_date') }}">
+                            <input type="date" name="admission_date" class="form-control" value="{{ old('admission_date', $student->admission_date) }}">
                             @error('admission_date') <small class="text-danger">{{ $message }}</small> @enderror
                         </div>
                     </div>
@@ -140,54 +138,53 @@
                         <div class="mb-3">
                             <label class="form-label">Status</label><br>
                             <div class="form-check form-check-inline">
-                                <input class="form-check-input" type="radio" name="status" value="Active" {{ old('status') == 'Active' ? 'checked' : '' }}>
+                                <input class="form-check-input" type="radio" name="status" value="Active" {{ old('status', $student->status) == 'Active' ? 'checked' : '' }}>
                                 <label class="form-check-label">Active</label>
                             </div>
                             <div class="form-check form-check-inline">
-                                <input class="form-check-input" type="radio" name="status" value="Inactive" {{ old('status') == 'Inactive' ? 'checked' : '' }}>
+                                <input class="form-check-input" type="radio" name="status" value="Inactive" {{ old('status', $student->status) == 'Inactive' ? 'checked' : '' }}>
                                 <label class="form-check-label">Inactive</label>
                             </div>
                             @error('status') <br><small class="text-danger">{{ $message }}</small> @enderror
                         </div>
                         <div class="mb-3">
                             <label class="form-label">Total Fee</label>
-                            <input type="number" name="total_fee" class="form-control" value="{{ old('total_fee') }}">
+                            <input type="number" name="total_fee" class="form-control" value="{{ old('total_fee', $student->total_fee) }}">
                             @error('total_fee') <small class="text-danger">{{ $message }}</small> @enderror
                         </div>
                         <div class="mb-3">
                             <label class="form-label">Fee Paid</label>
-                            <input type="number" name="fee_paid" class="form-control" value="{{ old('fee_paid') }}">
+                            <input type="number" name="fee_paid" class="form-control" value="{{ old('fee_paid', $student->fee_paid) }}">
                             @error('fee_paid') <small class="text-danger">{{ $message }}</small> @enderror
                         </div>
                         <div class="mb-3">
-                            <label class="form-label">Referring Agency (optional)</label>
-                            <input type="text" name="ref_agency" class="form-control" value="{{ old('ref_agency') }}">
+                            <label class="form-label">Referring Agency</label>
+                            <input type="text" name="ref_agency" class="form-control" value="{{ old('ref_agency', $student->ref_agency) }}">
                             @error('ref_agency') <small class="text-danger">{{ $message }}</small> @enderror
                         </div>
                         <div class="mb-3">
-                            <label class="form-label">Lead Reference (optional)</label>
-                            <input type="text" name="ref_lead" class="form-control" value="{{ old('ref_lead') }}">
+                            <label class="form-label">Lead Reference</label>
+                            <input type="text" name="ref_lead" class="form-control" value="{{ old('ref_lead', $student->ref_lead) }}">
                             @error('ref_lead') <small class="text-danger">{{ $message }}</small> @enderror
                         </div>
                     </div>
 
-                    <!-- Image Upload & Preview -->
+                    <!-- Photo -->
                     <div class="col-md-6 text-center">
                         <label class="form-label">Photo</label>
                         <input type="file" name="photo" class="form-control mb-2" onchange="previewImage(event)">
-                        <img id="preview" class="photo-preview" src="https://via.placeholder.com/120" alt="Preview">
+                        <img id="preview" class="photo-preview" src="{{ asset( $student->photo) }}" alt="Preview">
                         @error('photo') <br><small class="text-danger">{{ $message }}</small> @enderror
                     </div>
-
                 </div>
 
                 <div class="text-center mt-4">
-                    <button type="submit" class="btn btn-primary px-5">Submit</button>
+                    <button type="submit" class="btn btn-success px-5">Update</button>
                 </div>
             </form>
-
         </div>
     </div>
+
     <script>
         function previewImage(event) {
             const reader = new FileReader();
@@ -197,6 +194,4 @@
             reader.readAsDataURL(event.target.files[0]);
         }
     </script>
-
-
 @endsection

@@ -36,67 +36,77 @@
             <a href="{{route('student.add')}}" class="btn btn-primary" role="button">Add New <i class="ti ti-plus"></i></a>
         </div>
         <div>
-            <input type="search" class="form-control" placeholder="Search...">
+            <input type="search" id="searchInput" class="form-control" placeholder="Search...">
         </div>
     </div>
     <br>
-    <div class="table-responsive">
-        <table class="table table-hover table-bordered align-middle bg-white">
-            <thead class="table-primary text-center">
-            <tr>
-                <th>SL</th>
-                <th>Enrollment No</th>
-                <th>Student Name</th>
-                <th>Course</th>
-                <th>Batch</th>
-                <th>Status</th>
-                <th>Actions</th>
-            </tr>
-            </thead>
-            <tbody class="text-center">
-            <!-- Sample Row -->
-            <tr>
-                <td>1</td>
-                <td>STU2025001</td>
-                <td>Abir Hasan</td>
-                <td>B.Sc in CS</td>
-                <td>Spring 2025</td>
-                <td><span class="status-active">Active</span></td>
-                <td>
-                    <div class="btn-group">
-                        <button type="button" class="btn btn-sm btn-danger dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
-                            Action
-                        </button>
-                        <ul class="dropdown-menu">
-                            <li><a class="dropdown-item" href="#">View</a></li>
-                            <li><a class="dropdown-item" href="#">Edit</a></li>
-                            <li><a class="dropdown-item text-danger" href="#">Trash</a></li>
-                        </ul>
-                    </div>
-                </td>
-            </tr>
-            <tr>
-                <td>2</td>
-                <td>STU2025002</td>
-                <td>Sadia Rahman</td>
-                <td>BBA</td>
-                <td>Fall 2025</td>
-                <td><span class="status-inactive">Inactive</span></td>
-                <td>
-                    <div class="btn-group">
-                        <button type="button" class="btn btn-sm btn-danger dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
-                            Action
-                        </button>
-                        <ul class="dropdown-menu">
-                            <li><a class="dropdown-item" href="#">View</a></li>
-                            <li><a class="dropdown-item" href="#">Edit</a></li>
-                            <li><a class="dropdown-item text-danger" href="#">Trash</a></li>
-                        </ul>
-                    </div>
-                </td>
-            </tr>
-            <!-- Add more rows dynamically -->
-            </tbody>
-        </table>
-    </div>
+    @if(session('success'))
+        <x-success-message type="success" message="{{session('success')}}" />
+    @endif
+    @if(session('danger'))
+        <x-success-message type="danger" message="{{session('danger')}}" />
+    @endif
+
+        <div class="table-responsive">
+            <table class="table table-bordered table-striped table-hover align-middle" id="studentTable">
+                <thead class="table-dark text-center">
+                <tr>
+                    <th>SL</th>
+                    <th>Name</th>
+                    <th>Enrollment</th>
+                    <th>Email</th>
+                    <th>Phone</th>
+                    <th>Course</th>
+                    <th>Status</th>
+                    <th>Actions</th>
+                </tr>
+                </thead>
+@php $count=1; @endphp
+                <tbody class="text-center">
+                @forelse($students as $student)
+                    <tr>
+                        <td>{{$count++}}</td>
+                        <td>{{ $student->name }}</td>
+                        <td>{{ $student->enrollment }}</td>
+                        <td>{{ $student->email }}</td>
+                        <td>{{ $student->phone }}</td>
+                        <td>{{ $student->course }}</td>
+                        <td>
+                            <span class="badge bg-{{$student->status=='Active'?'success':'danger'}}">{{ $student->status }}</span>
+                        </td>
+                        <td>
+                            <a href="{{route('student.details',$student->id)}}" class="btn btn-sm btn-outline-primary me-1" title="View">
+                                <i class="bi bi-eye"></i>
+                            </a>
+                            <a href="{{route('student.edit',$student->id)}}" class="btn btn-sm btn-outline-warning me-1" title="Edit">
+                                <i class="bi bi-pencil-square"></i>
+                            </a>
+                            <form action="{{route('student.destroy',$student->id)}}" method="POST" class="d-inline" onsubmit="return confirm('Are you sure to delete this student?');">
+                                @csrf
+                                @method('DELETE')
+                                <button class="btn btn-sm btn-outline-danger" title="Delete">
+                                    <i class="bi bi-trash"></i>
+                                </button>
+                            </form>
+                        </td>
+                    </tr>
+                @empty
+                    <tr>
+                        <td colspan="6"><em>No students found.</em></td>
+                    </tr>
+                @endforelse
+                </tbody>
+            </table>
+        </div>
+    <script>
+        document.getElementById("searchInput").addEventListener("keyup", function () {
+            const input = this.value.toLowerCase();
+            const rows = document.querySelectorAll("#studentTable tbody tr");
+
+            rows.forEach(row => {
+                const rowText = row.textContent.toLowerCase();
+                row.style.display = rowText.includes(input) ? "" : "none";
+            });
+        });
+    </script>
 @endsection

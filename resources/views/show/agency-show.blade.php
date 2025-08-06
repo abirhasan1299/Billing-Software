@@ -63,19 +63,16 @@
                     <td>{{$d->fee_per_student}}</td>
                     <td>{{$d->total_amount}}</td>
                     <td>
-                        <div class="form-check form-switch">
-                            <input {{ $d->status === 'Active' ? 'checked' : '' }} class="form-check-input" type="checkbox"  id="statusToggle">
-                            <label class="form-check-label" for="statusToggle" id="statusLabel">{{$d->status}}</label>
-                        </div>
+                        <span class="badge bg-{{$d->status=='Active'?'success':'danger'}}">{{ $d->status }}</span>
                     </td>
                     <td>
                         <div class="d-flex justify-content-around">
-                            <a class="btn btn-sm btn-info" href="{{route('agency.edit',$d->id)}}" role="button"><i class="bi bi-pencil-square"></i></a>
-                            <a class="btn btn-sm btn-success" href="{{route('agency.details',$d->id)}}" role="button"><i class="bi bi-eye-fill"></i></a>
+                            <a class="btn btn-sm btn-outline-info" href="{{route('agency.edit',$d->id)}}" role="button"><i class="bi bi-pencil-square"></i></a>
+                            <a class="btn btn-sm btn-outline-success" href="{{route('agency.details',$d->id)}}" role="button"><i class="bi bi-eye-fill"></i></a>
                             <form action="{{route('agency.destroy',$d->id)}}" method="post" onsubmit="return confirm('Are you sure to delete ?');">
                                 @method('DELETE')
                                 @csrf
-                                <button class="btn btn-sm btn-danger" type="submit"><i class="bi bi-trash"></i></button>
+                                <button class="btn btn-sm btn-outline-danger" type="submit"><i class="bi bi-trash"></i></button>
                             </form>
                         </div>
                     </td>

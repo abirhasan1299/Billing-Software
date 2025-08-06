@@ -49,6 +49,12 @@ Route::delete('agency/destroy/{id}',[UniversityController::class,'destroy'])->na
 */
 Route::get('student-add/',[StudentController::class,'Home'])->name('student.add');
 Route::get('students/',[StudentController::class,'Show'])->name('student.show');
+Route::post('students-add/',[StudentController::class,'createStudent'])->name('student.insert');
+Route::get('students/{id}',[StudentController::class,'details'])->name('student.details');
+Route::get('students/edit/{id}',[StudentController::class,'edit'])->name('student.edit');
+Route::put('students/update/{id}',[StudentController::class,'update'])->name('student.update');
+Route::delete('students/destroy/{id}',[StudentController::class,'destroy'])->name('student.destroy');
+
 
 /*
 |--------------------------------------------------------------------------
