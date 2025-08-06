@@ -24,6 +24,9 @@
     @if(session('success'))
         <x-success-message type="success" message="{{session('success')}}" />
     @endif
+    @if(session('danger'))
+        <x-success-message type="danger" message="{{session('danger')}}" />
+    @endif
 
        <div class="d-flex justify-content-between">
            <div>
@@ -66,9 +69,15 @@
                         </div>
                     </td>
                     <td>
-                        <button class="btn btn-sm btn-info">Edit</button>
-                        <button class="btn btn-sm btn-success">View</button>
-                        <button class="btn btn-sm btn-danger">Delete</button>
+                        <div class="d-flex justify-content-around">
+                            <a class="btn btn-sm btn-info" href="{{route('agency.edit',$d->id)}}" role="button"><i class="bi bi-pencil-square"></i></a>
+                            <a class="btn btn-sm btn-success" href="{{route('agency.details',$d->id)}}" role="button"><i class="bi bi-eye-fill"></i></a>
+                            <form action="{{route('agency.destroy',$d->id)}}" method="post" onsubmit="return confirm('Are you sure to delete ?');">
+                                @method('DELETE')
+                                @csrf
+                                <button class="btn btn-sm btn-danger" type="submit"><i class="bi bi-trash"></i></button>
+                            </form>
+                        </div>
                     </td>
                 </tr>
                 @endforeach

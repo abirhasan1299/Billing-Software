@@ -37,6 +37,10 @@ Route::get('settings/',[HomeController::class,'Setting'])->name('settings');
 Route::get('agency-add/',[UniversityController::class,'Home'])->name('agency.add');
 Route::post('agency-insert/',[UniversityController::class,'addAgency'])->name('agency.insert');
 Route::get('agency/',[UniversityController::class,'Show'])->name('agency.show');
+Route::get('agency/{id}',[UniversityController::class,'Details'])->name('agency.details');
+Route::get('agency/edit/{id}',[UniversityController::class,'edit'])->name('agency.edit');
+Route::post('agency/update/{id}',[UniversityController::class,'update'])->name('agency.update');
+Route::delete('agency/destroy/{id}',[UniversityController::class,'destroy'])->name('agency.destroy');
 
 /*
 |--------------------------------------------------------------------------
