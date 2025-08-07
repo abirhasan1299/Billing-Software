@@ -5,9 +5,13 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>@yield('title')</title>
+
+    <!-- ✅ Include Select2 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
     <link rel="shortcut icon" type="image/png" href="{{asset('assets/images/logos/favicon.png')}}" />
     <link rel="stylesheet" href="{{ asset('assets/css/styles.min.css')  }}" />
-     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
+
     <style>
         body.dark-mode {
             background-color: #121212 !important;
@@ -207,7 +211,10 @@
     </div>
 </div>
 
-<script src="{{asset('/assets/libs/jquery/dist/jquery.min.js')}}"></script>
+<!-- ✅ jQuery -->
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<!-- ✅ Select2 JS -->
+<script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
 <script src="{{asset('/assets/libs/bootstrap/dist/js/bootstrap.bundle.min.js')}}"></script>
 <script src="{{asset('/assets/js/sidebarmenu.js')}}"></script>
 <script src="{{asset('/assets/js/app.min.js')}}"></script>
@@ -217,6 +224,8 @@
 <!-- solar icons -->
 <script src="https://cdn.jsdelivr.net/npm/iconify-icon@1.0.8/dist/iconify-icon.min.js"></script>
 
+@livewireScripts
+@stack('scripts')
 </body>
 
 </html>

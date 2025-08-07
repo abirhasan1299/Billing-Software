@@ -64,6 +64,13 @@ Route::delete('students/destroy/{id}',[StudentController::class,'destroy'])->nam
 
 Route::get('invoice-add/',[InvoiceController::class,'Home'])->name('invoice.add');
 Route::get('invoices/',[InvoiceController::class,'Show'])->name('invoice.show');
+Route::post('student-info/',[InvoiceController::class,'ajaxStudentInfo'])->name('invoice.ajaxShow');
+Route::post('invoice-make/',[InvoiceController::class,'store'])->name('invoice.store');
+Route::get('invoices/{id}',[InvoiceController::class,'details'])->name('invoice.details');
+Route::get('invoices/download/{id}',[InvoiceController::class,'download'])->name('invoice.download');
+Route::get('invoices/edit/{id}',[InvoiceController::class,'edit'])->name('invoice.edit');
+Route::put('invoices/update/{id}',[InvoiceController::class,'update'])->name('invoice.update');
+Route::delete('invoices/destroy/{id}',[InvoiceController::class,'destroy'])->name('invoice.destroy');
 
 /*
 |--------------------------------------------------------------------------

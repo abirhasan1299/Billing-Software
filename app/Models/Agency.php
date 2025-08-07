@@ -27,4 +27,9 @@ class Agency extends Model
         'total_amount',
         'notes'
     ];
+
+    public function invoices()
+    {
+        return $this->hasMany(Invoice::class, 'agency_id');
+    }
 }
