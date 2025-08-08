@@ -25,7 +25,8 @@ class EmailSettingController extends Controller
 
     public static function setMailConfig()
     {
-        if($settings = Email::first())
+        $settings = Email::first();
+        if($settings)
         {
             Config::set('mail.mailers.smtp.transport', 'smtp');
             Config::set('mail.mailers.smtp.host', $settings->host);
