@@ -79,7 +79,7 @@ class TransactionController extends Controller
             Transaction::create($validatedData);
             DB::commit();
 
-            return redirect()->route('trans.show')->with('success','Transaction Successfull');
+            return redirect()->route('trans.show')->with('success','Transaction & Mail Send Successfull');
         }catch(\Exception $e){
             DB::rollback();
             return redirect()->route('trans.show')->with('danger',throw $e);
