@@ -12,10 +12,14 @@ class Invoice extends Model
 
     public function students()
     {
-        return $this->hasOne(Student::class,'id','student_id');
+        return $this->belongsTo(Student::class,'student_id','id');
     }
     public function agencies()
     {
-        return $this->hasOne(Agency::class,'id','agency_id');
+        return $this->belongsTo(Agency::class,'agency_id','id');
+    }
+    public function transaction()
+    {
+        return $this->hasMany(Transaction::class,'id','invoice_id');
     }
 }

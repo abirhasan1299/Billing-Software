@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Student;
+use App\Models\Transaction;
 use Illuminate\Http\Request;
 
 class StudentController extends Controller
@@ -63,7 +64,8 @@ class StudentController extends Controller
     public function details($id)
     {
         $student = Student::findOrFail($id);
-        return view('details.student-details',compact('student'));
+        $transaction = Transaction::where('student_id',$student->id)->orderBy('id', 'DESC')->get();
+        return view('details.student-details',compact('student','transaction'));
     }
 
     public function edit($id)

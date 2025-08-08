@@ -61,10 +61,14 @@
                 <td>{{ \Carbon\Carbon::parse($invoice->invoice_date)->format('d M, Y') }}</td>
                 <td>৳ {{ number_format($invoice->pay_amount_student+$invoice->pay_amount_agency, 2) }}</td>
                 <td>
-                    @if($invoice->status)
+                    @if($invoice->status=='2')
                         <span class="badge bg-success">Paid</span>
+                    @elseif($invoice->status=='1')
+                        <span class="badge bg-warning text-dark">Running</span>
+                    @elseif($invoice->status=='0')
+                        <span class="badge bg-danger text-dark">Pending</span>
                     @else
-                        <span class="badge bg-warning text-dark">Pending</span>
+                        <span class="badge bg-success">Paid</span>
                     @endif
                 </td>
                 <td class="text-center">

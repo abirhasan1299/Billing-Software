@@ -32,4 +32,8 @@ class Agency extends Model
     {
         return $this->hasMany(Invoice::class, 'agency_id');
     }
+    public function transaction()
+    {
+        return $this->hasMany(Transaction::class, 'agency_id');
+    }
 }

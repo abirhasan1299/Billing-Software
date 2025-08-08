@@ -14,4 +14,8 @@ class Student extends Model
     {
         return $this->hasMany(Invoice::class, 'student_id');
     }
+    public function transaction()
+    {
+        return $this->hasMany(Transaction::class, 'student_id');
+    }
 }

@@ -54,7 +54,6 @@
                     <th>SL</th>
                     <th>Name</th>
                     <th>Enrollment</th>
-                    <th>Email</th>
                     <th>Phone</th>
                     <th>Course</th>
                     <th>Status</th>
@@ -68,7 +67,6 @@
                         <td>{{$count++}}</td>
                         <td>{{ $student->name }}</td>
                         <td>{{ $student->enrollment }}</td>
-                        <td>{{ $student->email }}</td>
                         <td>{{ $student->phone }}</td>
                         <td>{{ $student->course }}</td>
                         <td>

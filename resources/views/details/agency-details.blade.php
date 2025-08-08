@@ -44,8 +44,38 @@
                         <h5 class="border-bottom pb-2 text-primary">💰 Financial Information</h5>
                         <p><strong>Bank Details:</strong> {{ $agency->bank_details }}</p>
                         <p><strong>Payment Terms:</strong> {{ $agency->payment_term }}</p>
-                        <p><strong>Fee per Student:</strong> ${{ $agency->fee_per_student }}</p>
                         <p><strong>Total Amount:</strong> ${{ $agency->total_amount }}</p>
+                        <p><strong>Fee per Student:</strong> ${{ $agency->fee_per_student }}</p>
+                        <p><strong>Total Fee Paid:</strong> ${{ $agency->fee_paid }}</p>
+                    </div>
+
+                    {{-- Transaction History --}}
+                    <div class="col-lg-6">
+                        <h5 class="border-bottom pb-2 text-primary">💰 Transaction History</h5>
+                        <table class="table table-hover">
+                            @php $count=1; @endphp
+                            <tr>
+                                <th>#</th>
+                                <th>Amount</th>
+                                <th>Date</th>
+                                <th>Action</th>
+                            </tr>
+                            <tbody>
+                            @foreach($transaction as $t)
+                                <tr>
+                                    <td>{{$count++}}</td>
+                                    <td>{{$t->amount}} INR</td>
+                                    <td>
+                                        <div class="small text-muted">{{ $t->created_at->format('M d, Y') }}</div>
+                                        <div class="small text-muted">{{ $t->created_at->format('h:i A') }}</div>
+                                    </td>
+                                    <td>
+                                        <a href="{{route('trans.details',$t->id)}}" role="button" class="btn btn-sm btn-outline-info ">SEE</a>
+                                    </td>
+                                </tr>
+                            @endforeach
+                            </tbody>
+                        </table>
                     </div>
                 </div>
             </div>

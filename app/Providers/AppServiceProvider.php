@@ -3,7 +3,9 @@
 namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
-
+use App\Http\Controllers\EmailSettingController;
+use App\Observers\InvoiceObserver;
+use App\Models\Invoice;
 class AppServiceProvider extends ServiceProvider
 {
     /**
@@ -19,6 +21,7 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
-        //
+        EmailSettingController::setMailConfig();
+        Invoice::observe(InvoiceObserver::class);
     }
 }

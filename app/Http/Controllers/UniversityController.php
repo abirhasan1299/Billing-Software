@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Agency;
+use App\Models\Transaction;
 use Illuminate\Http\Request;
 
 class UniversityController extends Controller
@@ -29,7 +30,7 @@ class UniversityController extends Controller
             'payment_term' => 'required|string|max:255',
             'fee_per_student' => 'required|numeric',
             'total_amount' => 'required|numeric',
-            'notes' => 'string|max:1000'
+            'notes' => 'nullable',
         ]);
 
         Agency::create($validateData);
@@ -45,7 +46,8 @@ class UniversityController extends Controller
     public function Details($id)
     {
         $agency = Agency::findOrFail($id);
-        return view('details.agency-details',compact('agency'));
+        $transaction = Transaction::where('agency_id',$id)->get();
+        return view('details.agency-details',compact('agency','transaction'));
     }
 
     public function edit($id)

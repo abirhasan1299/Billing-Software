@@ -23,7 +23,7 @@ return new class extends Migration
             $table->string('mother',255);
             $table->string('status',255);
             $table->integer('total_fee');
-            $table->integer('fee_paid')->nullable();
+            $table->integer('fee_paid')->nullable()->default(0);
             $table->string('ref_agency',255)->nullable();
             $table->string('ref_lead',255)->nullable();
             $table->string('address',1000)->nullable();

@@ -11,7 +11,7 @@
     <link rel="shortcut icon" type="image/png" href="{{asset('assets/images/logos/favicon.png')}}" />
     <link rel="stylesheet" href="{{ asset('assets/css/styles.min.css')  }}" />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
-
+    <link href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css" rel="stylesheet">
     <style>
         body.dark-mode {
             background-color: #121212 !important;
@@ -51,9 +51,40 @@
             border: 1px solid #333;
         }
     </style>
-
+    <style >
+        .spinner-border {
+            width: 4rem;
+            border-width: 0.4rem;
+        }
+        /* Preloader styles */
+        #preloader {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: #fff; /* White background */
+            z-index: 9999;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        /* Smooth fade-out */
+        .fade-out {
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.6s ease, visibility 0.6s ease;
+        }
+    </style>
 </head>
 <body>
+<!-- Preloader -->
+<div id="preloader">
+    <div class="spinner-border text-primary" role="status" style="width:4rem; height:4rem; border-width:0.4rem;">
+        <span class="visually-hidden">Loading...</span>
+    </div>
+</div>
+
 <!--  Body Wrapper -->
 <div class="page-wrapper" id="main-wrapper" data-layout="vertical" data-navbarbg="skin6" data-sidebartype="full"
      data-sidebar-position="fixed" data-header-position="fixed">
@@ -221,9 +252,27 @@
 <script src="{{asset('/assets/libs/apexcharts/dist/apexcharts.min.js')}}"></script>
 <script src="{{asset('/assets/libs/simplebar/dist/simplebar.js')}}"></script>
 <script src="{{asset('/assets/js/dashboard.js')}}"></script>
+<script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+
 <!-- solar icons -->
 <script src="https://cdn.jsdelivr.net/npm/iconify-icon@1.0.8/dist/iconify-icon.min.js"></script>
+<script>
+    flatpickr("#date", {
+        dateFormat: "Y-m-d",
+        altInput: true,
+        altFormat: "F j, Y",
+    });
+</script>
+<!-- Preloader Script -->
+<script>
+    window.addEventListener("load", function() {
+        const preloader = document.getElementById("preloader");
+        preloader.classList.add("fade-out");
 
+        // Optional: completely remove from DOM after fade-out
+        setTimeout(() => preloader.remove(), 600);
+    });
+</script>
 @livewireScripts
 @stack('scripts')
 </body>

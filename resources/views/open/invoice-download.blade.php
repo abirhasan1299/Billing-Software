@@ -141,23 +141,20 @@
         <thead>
         <tr>
             <th>Description</th>
-            <th>Total Fee</th>
             <th>Paid</th>
             <th>Due</th>
         </tr>
         </thead>
         <tbody>
         <tr>
-            <td>{{ $invoice->students->course }} (Course Fees)</td>
-            <td>${{ number_format($invoice->students->total_fee, 2) }}</td>
+            <td>{{ $invoice->students->course }} (Student Fees)</td>
             <td>${{ number_format($invoice->pay_amount_student, 2) }}</td>
-            <td>${{ number_format($invoice->students->total_fee - $invoice->pay_amount_student, 2) }}</td>
+            <td>${{ number_format($invoice->pay_amount_student, 2) }}</td>
         </tr>
         <tr>
             <td>Agency Fees</td>
-            <td>${{ number_format($invoice->agencies->total_amount, 2) }}</td>
             <td>${{ number_format($invoice->pay_amount_agency, 2) }}</td>
-            <td>${{ number_format($invoice->agencies->total_amount - $invoice->pay_amount_agency, 2) }}</td>
+            <td>${{ number_format($invoice->pay_amount_agency, 2) }}</td>
         </tr>
         </tbody>
     </table>

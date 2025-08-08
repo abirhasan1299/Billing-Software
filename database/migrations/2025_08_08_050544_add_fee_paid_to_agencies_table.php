@@ -11,8 +11,8 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::table('invoices', function (Blueprint $table) {
-            $table->integer('status')->default(false)->after('notes');
+        Schema::table('agencies', function (Blueprint $table) {
+            $table->integer('fee_paid')->nullable()->default(0)->after('total_amount');
         });
     }
 
@@ -21,7 +21,7 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::table('invoices', function (Blueprint $table) {
+        Schema::table('agencies', function (Blueprint $table) {
             //
         });
     }

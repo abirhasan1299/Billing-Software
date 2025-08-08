@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\EmailSettingController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\InvoiceController;
 use App\Http\Controllers\StudentController;
@@ -28,6 +29,12 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/',[HomeController::class,'Home'])->name('dashboard');
 Route::get('settings/',[HomeController::class,'Setting'])->name('settings');
+/*
+|--------------------------------------------------------------------------
+| Email Controller Routes
+|--------------------------------------------------------------------------
+*/
+Route::post('email/update/',[EmailSettingController::class,'updateEmailSetting'])->name('email.update');
 
 /*
 |--------------------------------------------------------------------------
@@ -79,7 +86,9 @@ Route::delete('invoices/destroy/{id}',[InvoiceController::class,'destroy'])->nam
 */
 Route::get('transaction-add/',[TransactionController::class,'Home'])->name('trans.add');
 Route::get('transactions/',[TransactionController::class,'Show'])->name('trans.show');
-
+Route::post('transactions/store/',[TransactionController::class,'store'])->name('trans.store');
+Route::get('transactions/details/{id}',[TransactionController::class,'details'])->name('trans.details');
+Route::delete('transactions/destroy/{id}',[TransactionController::class,'destroy'])->name('trans.destroy');
 /*
 |--------------------------------------------------------------------------
 | ADMIN Controller Routes

@@ -24,7 +24,20 @@
             color: #212529;
         }
     </style>
-    <h2 class="mb-4 text-center fw-bold text-uppercase text-primary">Student Profile</h2>
+    <div class="d-flex justify-content-between">
+        <div>
+            <h2 class="mb-4 text-center fw-bold text-uppercase text-primary">Student Profile</h2>
+        </div>
+        <div>
+            <!-- Navigation -->
+            <div class="text-center">
+                <a href="{{ route('student.show') }}" class="btn btn-outline-secondary px-4">
+                    <i class="bi bi-arrow-left"></i> Back to List
+                </a>
+            </div>
+        </div>
+    </div>
+
 
     <!-- Basic Info -->
     <div class="row mb-4">
@@ -89,12 +102,42 @@
             <div class="mb-2"><span class="data-label">Lead Reference:</span> <span class="data-value">{{ $student->ref_lead ?? '-' }}</span></div>
         </div>
     </div>
+    <div class="row mb-4">
+        <div class="col-md-6">
+            <div class="section-title">Transaction History</div>
+            <table class="table table-hover">
+                @php $count=1; @endphp
+                <tr>
+                    <th>#</th>
+                    <th>Amount</th>
+                    <th>Date</th>
+                    <th>Action</th>
+                </tr>
+                <tbody>
 
-    <!-- Navigation -->
-    <div class="text-center mt-4">
-        <a href="{{ route('student.show') }}" class="btn btn-outline-secondary px-4">
-            <i class="bi bi-arrow-left"></i> Back to List
-        </a>
+                    @forelse($transaction as $t)
+                        <tr>
+                            <td>{{$count++}}</td>
+                            <td>{{$t->amount}} INR</td>
+                            <td>
+                                <div class="small text-muted">{{ $t->created_at->format('M d, Y') }}</div>
+                                <div class="small text-muted">{{ $t->created_at->format('h:i A') }}</div>
+                            </td>
+                            <td>
+                                <a href="{{route('trans.details',$t->id)}}" role="button" class="btn btn-sm btn-outline-info ">SEE</a>
+                            </td>
+                        </tr>
+                    @empty
+                        <td colspan="4" class="text-center text-muted py-5">No Transaction found</td>
+                    @endforelse
+
+
+
+                </tbody>
+            </table>
+        </div>
     </div>
+
+
 
 @endsection

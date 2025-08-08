@@ -21,6 +21,9 @@
             margin-top: 30px;
         }
     </style>
+    @if(session('success'))
+        <x-success-message type="success" message="{{session('success')}}" />
+    @endif
     <!-- Stats Cards -->
     <div class="row g-4 mb-4">
         <div class="col-md-3">

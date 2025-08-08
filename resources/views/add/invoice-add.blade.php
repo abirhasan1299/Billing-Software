@@ -52,7 +52,7 @@
 
                     <div class="col-md-6">
                         <label class="form-label">Invoice Date</label>
-                        <input type="date" name="invoice_date" class="form-control @error('invoice_date') is-invalid @enderror" value="{{ old('invoice_date') }}">
+                        <input type="date" id="date" name="invoice_date" class="form-control @error('invoice_date') is-invalid @enderror" value="{{ old('invoice_date') }}">
                         @error('invoice_date')
                         <div class="invalid-feedback">{{ $message }}</div>
                         @enderror
@@ -60,7 +60,7 @@
 
                     <div class="col-md-6">
                         <label class="form-label">Due Date</label>
-                        <input type="date" name="due_date" class="form-control @error('due_date') is-invalid @enderror" value="{{ old('due_date') }}">
+                        <input type="date" id="date" name="due_date" class="form-control @error('due_date') is-invalid @enderror" value="{{ old('due_date') }}">
                         @error('due_date')
                         <div class="invalid-feedback">{{ $message }}</div>
                         @enderror

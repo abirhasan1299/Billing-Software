@@ -56,7 +56,7 @@
                         </div>
                         <div class="mb-3">
                             <label class="form-label">Date of Birth</label>
-                            <input type="date" name="dob" class="form-control" value="{{ old('dob') }}">
+                            <input type="date" name="dob" id="date" class="form-control" value="{{ old('dob') }}">
                             @error('dob') <small class="text-danger">{{ $message }}</small> @enderror
                         </div>
                         <div class="mb-3">
@@ -130,7 +130,7 @@
                         </div>
                         <div class="mb-3">
                             <label class="form-label">Admission Date</label>
-                            <input type="date" name="admission_date" class="form-control" value="{{ old('admission_date') }}">
+                            <input type="date" id="date" name="admission_date" class="form-control" value="{{ old('admission_date') }}">
                             @error('admission_date') <small class="text-danger">{{ $message }}</small> @enderror
                         </div>
                     </div>

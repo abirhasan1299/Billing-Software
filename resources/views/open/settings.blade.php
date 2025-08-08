@@ -27,36 +27,48 @@
             <h3 class="mb-4 text-center">⚙️ System Settings</h3>
 
             <!-- Email Configuration -->
+            <form action="{{route('email.update')}}" method="post">
+                @csrf
             <div class="mb-4">
                 <div class="section-title">📧 Email Configuration</div>
                 <div class="row g-3">
                     <div class="col-md-6">
                         <label class="form-label">SMTP Host</label>
-                        <input type="text" class="form-control" name="smtp_host" placeholder="smtp.mailserver.com">
+                        <input type="text" class="form-control" name="host" placeholder="smtp.mailserver.com">
                     </div>
                     <div class="col-md-6">
                         <label class="form-label">SMTP Port</label>
-                        <input type="text" class="form-control" name="smtp_port" placeholder="587">
+                        <input type="text" class="form-control" name="port" placeholder="587">
+                    </div>
+                    <div class="col-md-6">
+                        <label class="form-label">Encryption</label>
+                        <input type="text" class="form-control" name="encryption" placeholder="TLS">
                     </div>
                     <div class="col-md-6">
                         <label class="form-label">SMTP Username</label>
-                        <input type="text" class="form-control" name="smtp_username">
+                        <input type="text" class="form-control" name="username">
                     </div>
                     <div class="col-md-6">
                         <label class="form-label">SMTP Password</label>
-                        <input type="password" class="form-control" name="smtp_password">
+                        <input type="password" class="form-control" name="password">
                     </div>
                     <div class="col-md-6">
-                        <label class="form-label">From Email</label>
-                        <input type="email" class="form-control" name="from_email">
+                        <label class="form-label">From Email Address</label>
+                        <input type="email" class="form-control" name="from_address">
                     </div>
                     <div class="col-md-6">
                         <label class="form-label">From Name</label>
                         <input type="text" class="form-control" name="from_name">
                     </div>
-                </div>
-            </div>
+                    <div class="col-md-6">
+                        <div class="d-flex justify-content-end">
+                            <input type="submit" class="btn btn-primary  mt-4" value="SET MAILING">
+                        </div>
+                    </div>
 
+                </div>
+                </form>
+            </div>
             <hr>
 
             <!-- Cron Job Settings -->
