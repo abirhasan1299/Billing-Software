@@ -20,10 +20,10 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::post('public/invoice-tracker/',[HomeController::class,'InvoiceTracker'])->name('invoice.tracker');
-Route::get('public/invoice/',[HomeController::class,'invoiceForm'])->name('invoice.checker');
-Route::get('public/transaction/',[HomeController::class,'transactionForm'])->name('trans.checker');
-Route::post('public/transaction-tracker/',[HomeController::class,'TransactionTracker'])->name('trans.tracker');
+Route::post('tracker/invoice-tracker/',[HomeController::class,'InvoiceTracker'])->name('invoice.tracker');
+Route::get('tracker/invoice/',[HomeController::class,'invoiceForm'])->name('invoice.checker');
+Route::get('tracker/transaction/',[HomeController::class,'transactionForm'])->name('trans.checker');
+Route::post('tracker/transaction-tracker/',[HomeController::class,'TransactionTracker'])->name('trans.tracker');
 
 Route::get('/',[HomeController::class,'login'])->name('login');
 Route::post('admin/verify/',[HomeController::class,'LoginVerify'])->name('login.verify');
