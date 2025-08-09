@@ -108,6 +108,13 @@
                         </td>
                     </tr>
                 @endif
+                <!-- Button -->
+                <div style="text-align: center; margin-top: 30px;">
+                    <a href="{{route('invoice.checker')}}"
+                       style="display: inline-block; padding: 12px 24px; font-size: 16px; background-color: #4f46e5; color: #ffffff; text-decoration: none; font-weight: bold; border-radius: 8px;">
+                        🔍 View Invoice
+                    </a>
+                </div>
 
                 <!-- Footer -->
                 <tr>

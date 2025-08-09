@@ -34,82 +34,41 @@
                 <div class="row g-3">
                     <div class="col-md-6">
                         <label class="form-label">SMTP Host</label>
-                        <input type="text" class="form-control" name="host" placeholder="smtp.mailserver.com">
+                        <input type="text" class="form-control" name="host" placeholder="smtp.mailserver.com" value="{{$data->host??''}}">
                     </div>
                     <div class="col-md-6">
                         <label class="form-label">SMTP Port</label>
-                        <input type="text" class="form-control" name="port" placeholder="587">
+                        <input type="text" class="form-control" value="{{$data->port??''}}" name="port" placeholder="587">
                     </div>
                     <div class="col-md-6">
                         <label class="form-label">Encryption</label>
-                        <input type="text" class="form-control" name="encryption" placeholder="TLS">
+                        <input type="text" value="{{$data->encryption??''}}" class="form-control" name="encryption" placeholder="TLS" >
                     </div>
                     <div class="col-md-6">
                         <label class="form-label">SMTP Username</label>
-                        <input type="text" class="form-control" name="username">
+                        <input type="text" value="{{$data->username??''}}" class="form-control" name="username">
                     </div>
                     <div class="col-md-6">
                         <label class="form-label">SMTP Password</label>
-                        <input type="password" class="form-control" name="password">
+                        <input type="text" class="form-control" name="password" value="{{$data->password??''}}">
                     </div>
                     <div class="col-md-6">
                         <label class="form-label">From Email Address</label>
-                        <input type="email" class="form-control" name="from_address">
+                        <input type="email" value="{{$data->from_address??''}}" class="form-control" name="from_address">
                     </div>
                     <div class="col-md-6">
                         <label class="form-label">From Name</label>
-                        <input type="text" class="form-control" name="from_name">
+                        <input type="text" class="form-control" value="{{$data->from_name??''}}" name="from_name">
                     </div>
                     <div class="col-md-6">
-                        <div class="d-flex justify-content-end">
-                            <input type="submit" class="btn btn-primary  mt-4" value="SET MAILING">
+                        <div class="d-flex justify-content-center" style="margin-top: 40px;">
+                            <input type="submit" class="btn btn-primary " value="Save Settings">
                         </div>
                     </div>
 
                 </div>
                 </form>
             </div>
-            <hr>
-
-            <!-- Cron Job Settings -->
-            <div class="mb-4">
-                <div class="section-title">⏱️ Automation & Cron Settings</div>
-                <div class="row g-3">
-                    <div class="col-md-6">
-                        <label class="form-label">Enable Due Fee Reminders</label>
-                        <select class="form-select" name="enable_reminders">
-                            <option value="1">Enabled</option>
-                            <option value="0">Disabled</option>
-                        </select>
-                    </div>
-                    <div class="col-md-6">
-                        <label class="form-label">Reminder Frequency</label>
-                        <select class="form-select" name="reminder_frequency">
-                            <option>Daily</option>
-                            <option>Weekly</option>
-                            <option>Monthly</option>
-                            <option>Custom</option>
-                        </select>
-                    </div>
-                    <div class="col-md-6">
-                        <label class="form-label">Alert if Student Fee < University Fee</label>
-                        <select class="form-select" name="alert_underpaid_students">
-                            <option value="1">Yes</option>
-                            <option value="0">No</option>
-                        </select>
-                    </div>
-                    <div class="col-md-6">
-                        <label class="form-label">University Fee Alert Email</label>
-                        <input type="email" class="form-control" name="alert_email">
-                    </div>
-                </div>
-            </div>
-
-            <!-- Submit Button -->
-            <div class="text-center mt-4">
-                <button type="submit" class="btn btn-primary px-5">💾 Save Settings</button>
-            </div>
-
         </div>
 
 @endsection

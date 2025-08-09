@@ -1,10 +1,18 @@
-@extends('master')
-@section('title','Transaction Details')
-@section('content')
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Transaction Details</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <!-- Bootstrap Icons -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet" />
     <style>
         body {
             background: #f4f6f8;
-            font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+            font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+            padding: 2rem 1rem;
         }
         .transaction-header {
             padding: 2rem 0;
@@ -14,12 +22,14 @@
         .transaction-header h1 {
             font-weight: 700;
             font-size: 1.75rem;
+            word-break: break-word;
         }
         .transaction-meta {
             display: flex;
             flex-wrap: wrap;
             gap: 1.5rem;
             font-size: 0.95rem;
+            color: #6c757d;
         }
         .meta-item {
             display: flex;
@@ -42,6 +52,7 @@
             margin-bottom: 1.5rem;
             border-bottom: 1px solid #e9ecef;
             padding-bottom: 0.75rem;
+            color: #212529;
         }
         .details-grid {
             display: grid;
@@ -56,22 +67,34 @@
         .details-label {
             font-size: 0.85rem;
             color: #6c757d;
+            margin-bottom: 0.3rem;
         }
         .details-value {
             font-size: 1rem;
             font-weight: 500;
             color: #212529;
+            word-break: break-word;
         }
         .action-buttons {
             display: flex;
             gap: 0.75rem;
             flex-wrap: wrap;
         }
+        .btn-outline-secondary, .btn-outline-success, .btn-outline-danger {
+            display: flex;
+            align-items: center;
+            gap: 0.4rem;
+        }
     </style>
+</head>
+<body>
+
+<div class="container">
+
     <!-- Header -->
     <div class="transaction-header">
-        <h1> {{ $transaction->transaction_id }}</h1>
-        <div class="transaction-meta text-muted mt-2">
+        <h1>{{ $transaction->transaction_id }}</h1>
+        <div class="transaction-meta">
             <div class="meta-item">
                 <i class="bi bi-calendar-event"></i>
                 {{ $transaction->created_at->format('M d, Y h:i A') }}
@@ -79,16 +102,13 @@
             <div class="meta-item">
                 <i class="bi bi-person"></i>
                 @php
-                    if($transaction->type=="0")
-                        {
-                            echo $transaction->student->name;
-                        }
-                    elseif($transaction->type=="1")
-                        {
-                            echo $transaction->agency->name;
-                        }else{
-                            echo $transaction->custom_payer;
-                        }
+                    if($transaction->type == "0") {
+                        echo $transaction->student->name;
+                    } elseif($transaction->type == "1") {
+                        echo $transaction->agency->name;
+                    } else {
+                        echo $transaction->custom_payer;
+                    }
                 @endphp
             </div>
             <div class="meta-item">
@@ -106,16 +126,13 @@
                 <div class="details-label">Payer</div>
                 <div class="details-value">
                     @php
-                        if($transaction->type=="0")
-                            {
-                                echo $transaction->student->name." (STUDENT)";
-                            }
-                        elseif($transaction->type=="1")
-                            {
-                                echo $transaction->agency->name." (AGENCY)";
-                            }else{
-                                echo $transaction->custom_payer." (CUSTOM)";
-                            }
+                        if($transaction->type == "0") {
+                            echo $transaction->student->name . " (STUDENT)";
+                        } elseif($transaction->type == "1") {
+                            echo $transaction->agency->name . " (AGENCY)";
+                        } else {
+                            echo $transaction->custom_payer . " (CUSTOM)";
+                        }
                     @endphp
                 </div>
             </div>
@@ -142,14 +159,10 @@
         </div>
     </div>
 
-    <!-- Actions -->
-    <div class="transaction-section">
-        <h5>Actions</h5>
-        <div class="action-buttons">
-            <a href="{{route('trans.show')}}" class="btn btn-outline-secondary">
-                <i class="bi bi-arrow-left"></i> Back to List
-            </a>
-        </div>
-    </div>
+</div>
 
-@endsection
+<!-- Bootstrap JS Bundle -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
+</body>
+</html>

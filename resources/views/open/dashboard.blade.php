@@ -30,7 +30,7 @@
             <div class="card text-white bg-primary">
                 <div class="card-body">
                     <h5 class="card-title">Total Students</h5>
-                    <h3>1520</h3>
+                    <h3>{{$totalStudent}}</h3>
                 </div>
             </div>
         </div>
@@ -38,15 +38,15 @@
             <div class="card text-white bg-success">
                 <div class="card-body">
                     <h5 class="card-title">Fees Collected</h5>
-                    <h3>৳1,200,000</h3>
+                    <h3>৳{{$collectedFees}}</h3>
                 </div>
             </div>
         </div>
         <div class="col-md-3">
             <div class="card text-white bg-warning">
                 <div class="card-body">
-                    <h5 class="card-title">Fees Due</h5>
-                    <h3>৳350,000</h3>
+                    <h5 class="card-title">Fees Due Student</h5>
+                    <h3>৳{{$dueStudent}}</h3>
                 </div>
             </div>
         </div>
@@ -54,7 +54,7 @@
             <div class="card text-white bg-danger">
                 <div class="card-body">
                     <h5 class="card-title">Pending Board Dues</h5>
-                    <h3>৳200,000</h3>
+                    <h3>৳{{$dueBoard}}</h3>
                 </div>
             </div>
         </div>
@@ -73,8 +73,22 @@
         <div class="col-md-6">
             <div class="card">
                 <div class="card-body">
-                    <h5 class="card-title text-center">Student Enrollment by Batch</h5>
-                    <canvas id="batchChart"></canvas>
+                    <h5 class="card-title text-center"><i class="bi bi-credit-card-2-front"></i> Recent Transaction</h5>
+                    <table class="table table-hover">
+
+                        <tbody>
+                        @forelse($recentTrans as $t)
+                            <tr>
+                                <td>{{strtoupper($t->method)}}</td>
+                                <td>৳{{$t->amount}}</td>
+                                <td>{{$t->created_at->format('F j, Y')}}</td>
+                                <td>{{$t->created_at->format('h:i A')}}</td>
+                            </tr>
+                        @empty
+                            <tr class="text-center ">No Recent History</tr>
+                        @endforelse
+                        </tbody>
+                    </table>
                 </div>
             </div>
         </div>
@@ -100,22 +114,6 @@
             }
         });
 
-        const batchChart = new Chart(document.getElementById('batchChart'), {
-            type: 'doughnut',
-            data: {
-                labels: ['Spring 2025', 'Fall 2025', 'Winter 2024'],
-                datasets: [{
-                    label: 'Students',
-                    data: [620, 530, 370],
-                    backgroundColor: ['#0dcaf0', '#198754', '#ffc107']
-                }]
-            },
-            options: {
-                responsive: true,
-                plugins: {
-                    legend: { position: 'bottom' }
-                }
-            }
-        });
+
     </script>
 @endsection

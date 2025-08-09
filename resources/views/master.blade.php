@@ -95,7 +95,7 @@
         <div>
             <div class="brand-logo d-flex align-items-center justify-content-between">
                 <a href="#" class="text-nowrap logo-img">
-                    <h3>LOGO</h3>
+                    <h3>ACCOUNT SOFT.</h3>
                 </a>
                 <div class="close-btn d-xl-none d-block sidebartoggler cursor-pointer" id="sidebarCollapse">
                     <i class="ti ti-x fs-6"></i>
@@ -186,6 +186,43 @@
                         </a>
                     </li>
                     <li class="sidebar-item">
+                        <a class="sidebar-link justify-content-between has-arrow" href="javascript:void(0)" aria-expanded="false">
+                            <div class="d-flex align-items-center gap-3">
+                  <span class="d-flex">
+                    <i class="bi bi-speedometer"></i>
+                  </span>
+                                <span class="hide-menu">Public Trackers</span>
+                            </div>
+
+                        </a>
+                        <ul aria-expanded="false" class="collapse first-level">
+                            <li class="sidebar-item">
+                                <a class="sidebar-link justify-content-between"
+                                   href="{{route('invoice.checker')}}">
+                                    <div class="d-flex align-items-center gap-3">
+                                        <div class="round-16 d-flex align-items-center justify-content-center">
+                                            <i class="ti ti-circle"></i>
+                                        </div>
+                                        <span class="hide-menu">Invoice Tracker</span>
+                                    </div>
+
+                                </a>
+                            </li>
+                            <li class="sidebar-item">
+                                <a class="sidebar-link justify-content-between"
+                                   href="{{route('trans.checker')}}">
+                                    <div class="d-flex align-items-center gap-3">
+                                        <div class="round-16 d-flex align-items-center justify-content-center">
+                                            <i class="ti ti-circle"></i>
+                                        </div>
+                                        <span class="hide-menu">Transaction Tracker</span>
+                                    </div>
+
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="sidebar-item">
                         <a class="sidebar-link justify-content-between"
                            href="{{route('settings')}}"
                            aria-expanded="false">
@@ -211,7 +248,14 @@
         <!--  Header Start -->
         <header class="app-header">
             <nav class="navbar navbar-expand-lg navbar-light">
+                <ul class="navbar-nav">
+                    <li class="nav-item d-block d-xl-none">
+                        <a class="nav-link sidebartoggler " id="headerCollapse" href="javascript:void(0)">
+                            <i class="ti ti-menu-2"></i>
+                        </a>
+                    </li>
 
+                </ul>
                 <div class="navbar-collapse justify-content-end px-0" id="navbarNav">
                     <ul class="navbar-nav flex-row ms-auto align-items-center justify-content-end">
 
@@ -223,7 +267,7 @@
                             <div class="dropdown-menu dropdown-menu-end dropdown-menu-animate-up" aria-labelledby="drop2">
                                 <div class="message-body">
 
-                                    <a href="#" class="btn btn-outline-primary mx-3 mt-2 d-block">Logout</a>
+                                    <a href="{{route('logout')}}" class="btn btn-outline-primary mx-3 mt-2 d-block">Logout</a>
                                 </div>
                             </div>
                         </li>

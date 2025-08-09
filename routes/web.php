@@ -20,6 +20,16 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+Route::post('public/invoice-tracker/',[HomeController::class,'InvoiceTracker'])->name('invoice.tracker');
+Route::get('public/invoice/',[HomeController::class,'invoiceForm'])->name('invoice.checker');
+Route::get('public/transaction/',[HomeController::class,'transactionForm'])->name('trans.checker');
+Route::post('public/transaction-tracker/',[HomeController::class,'TransactionTracker'])->name('trans.tracker');
+
+Route::get('/',[HomeController::class,'login'])->name('login');
+Route::post('admin/verify/',[HomeController::class,'LoginVerify'])->name('login.verify');
+
+
+Route::middleware(['auth'])->group(function () {
 
 /*
 |--------------------------------------------------------------------------
@@ -27,8 +37,9 @@ use Illuminate\Support\Facades\Route;
 |--------------------------------------------------------------------------
 */
 
-Route::get('/',[HomeController::class,'Home'])->name('dashboard');
+Route::get('/admin',[HomeController::class,'Home'])->name('dashboard');
 Route::get('settings/',[HomeController::class,'Setting'])->name('settings');
+Route::get('/logout',[HomeController::class,'logout'])->name('logout');
 /*
 |--------------------------------------------------------------------------
 | Email Controller Routes
@@ -96,3 +107,7 @@ Route::delete('transactions/destroy/{id}',[TransactionController::class,'destroy
 */
 Route::get('admin-add/',[AdminController::class,'Home'])->name('admin.add');
 Route::get('admins/',[AdminController::class,'Show'])->name('admin.show');
+Route::post('admins/add/',[AdminController::class,'store'])->name('admin.store');
+Route::get('admins/details/{id}',[AdminController::class,'details'])->name('admin.details');
+Route::delete('admins/destroy/{id}',[AdminController::class,'destroy'])->name('admin.destroy');
+});

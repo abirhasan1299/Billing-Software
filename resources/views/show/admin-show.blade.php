@@ -32,6 +32,14 @@
         margin-right: 6px;
     }
 </style>
+
+@if(session('success'))
+    <x-success-message type="success" message="{{session('success')}}" />
+@endif
+@if(session('danger'))
+    <x-success-message type="danger" message="{{session('danger')}}" />
+@endif
+
 <div class="d-flex justify-content-between">
     <div>
         <a href="{{route('admin.add')}}" class="btn btn-primary" role="button">Add New <i class="ti ti-plus"></i></a>
@@ -49,35 +57,44 @@
             <th>#</th>
             <th>Full Name</th>
             <th>Email</th>
-            <th>Phone</th>
             <th>Role</th>
             <th>Actions</th>
         </tr>
         </thead>
         <tbody>
+        @php $count=1; @endphp
+        @forelse($data as $d)
         <tr>
-            <td>1</td>
-            <td>Abir Hasan</td>
-            <td>abir@example.com</td>
-            <td>+8801234567890</td>
-            <td><span class="badge bg-primary">Super Admin</span></td>
+            <td>{{$count++}}</td>
+            <td>{{$d->name}}</td>
+            <td>{{$d->email}}</td>
+            <td>
+                <span class="badge bg-@php
+                    if($d->role=='superadmin')
+                        {
+                            echo 'warning';
+                        }elseif ($d->role=='editor'){
+                            echo 'primary';
+                        }else{
+                            echo 'info';
+                        }
+                @endphp">{{strtoupper($d->role)}}</span>
+            </td>
             <td class="action-btns">
-                <button class="btn btn-sm btn-success">Edit</button>
-                <button class="btn btn-sm btn-danger">Delete</button>
+                <a href="{{route('admin.details',$d->id)}}" class="btn btn-sm btn-secondary" role="button">View</a>
+                <form action="{{route('admin.destroy',$d->id)}}" method="POST" onsubmit="return confirm('Are you sure you want to delete this payment?');" style="display:inline-block;">
+                    @csrf
+                    @method('DELETE')
+                    <button type="submit"  class="btn btn-sm btn-danger">Delete</button>
+                </form>
             </td>
         </tr>
-        <tr>
-            <td>2</td>
-            <td>Sadia Rahman</td>
-            <td>sadia@example.com</td>
-            <td>+8801999888777</td>
-            <td><span class="badge bg-info text-dark">Manager</span></td>
-            <td class="action-btns">
-                <button class="btn btn-sm btn-success">Edit</button>
-                <button class="btn btn-sm btn-danger">Delete</button>
-            </td>
-        </tr>
-        <!-- More rows here -->
+        @empty
+            <tr >
+                <td colspan="5" class="text-center text-danger fw-bolder"> No Administrative Found </td>
+            </tr>
+        @endforelse
+
         </tbody>
     </table>
 </div>

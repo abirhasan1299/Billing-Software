@@ -119,11 +119,6 @@
                                 <i class="bi bi-eye"></i>
                             </a>
 
-                            <!-- Download PDF -->
-                            <a href="#" class="btn btn-sm btn-outline-success" title="Download PDF">
-                                <i class="bi bi-file-earmark-pdf"></i>
-                            </a>
-
                             <!-- Delete (form) -->
                             <form action="{{route('trans.destroy',$payment->id)}}" method="POST" onsubmit="return confirm('Are you sure you want to delete this payment?');" style="display:inline-block;">
                                 @csrf
