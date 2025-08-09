@@ -158,7 +158,7 @@
                 <!-- ACTION BUTTONS -->
                 <tr>
                     <td class="section" align="center">
-                        <a href="#" class="btn btn-secondary">Verify in Portal</a>
+                        <a href="{{route('trans.checker')}}" class="btn btn-secondary">Verify in Portal</a>
                     </td>
                 </tr>
                 <!-- FOOTER -->
