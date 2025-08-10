@@ -30,7 +30,6 @@ Route::post('admin/verify/',[HomeController::class,'LoginVerify'])->name('login.
 
 
 Route::middleware(['auth'])->group(function () {
-
 /*
 |--------------------------------------------------------------------------
 | Home Controller Routes

@@ -79,6 +79,7 @@
                             <a href="{{route('student.edit',$student->id)}}" class="btn btn-sm btn-outline-warning me-1" title="Edit">
                                 <i class="bi bi-pencil-square"></i>
                             </a>
+                            @can('admin-only')
                             <form action="{{route('student.destroy',$student->id)}}" method="POST" class="d-inline" onsubmit="return confirm('Are you sure to delete this student?');">
                                 @csrf
                                 @method('DELETE')
@@ -86,6 +87,7 @@
                                     <i class="bi bi-trash"></i>
                                 </button>
                             </form>
+                            @endcan
                         </td>
                     </tr>
                 @empty

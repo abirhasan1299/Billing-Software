@@ -172,6 +172,7 @@
 
                         </a>
                     </li>
+                    @can('admin-only')
                     <li class="sidebar-item">
                         <a class="sidebar-link justify-content-between"
                            href="{{route('admin.show')}}"
@@ -185,6 +186,7 @@
 
                         </a>
                     </li>
+                    @endcan
                     <li class="sidebar-item">
                         <a class="sidebar-link justify-content-between has-arrow" href="javascript:void(0)" aria-expanded="false">
                             <div class="d-flex align-items-center gap-3">
@@ -222,6 +224,7 @@
                             </li>
                         </ul>
                     </li>
+                    @can('admin-only')
                     <li class="sidebar-item">
                         <a class="sidebar-link justify-content-between"
                            href="{{route('settings')}}"
@@ -232,9 +235,9 @@
                   </span>
                                 <span class="hide-menu">Settings</span>
                             </div>
-
                         </a>
                     </li>
+                    @endcan
 
                 </ul>
             </nav>
